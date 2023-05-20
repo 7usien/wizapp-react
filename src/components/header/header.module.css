@@ -1,0 +1,9 @@
+.header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header h3 {color: blue; text-transform: capitalize; font-size: 1.5rem;}
