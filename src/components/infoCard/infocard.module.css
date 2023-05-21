@@ -1,0 +1,15 @@
+.infoCard {
+  background-color: #EDF2F8;
+  border-radius:40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.right h3{color:#484848 ;}
+.right h1{color: #2667B1;}
+.right ul {}
+.right ul li {}
+
+
+.map {height: 250px; width: 500px; }
