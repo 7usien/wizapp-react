@@ -2,7 +2,8 @@
   background-color: #EDF2F8;
   border-radius:40px;
 display: flex;
-justify-content: space-between;
+flex-direction: column;
+
 align-items: center;
 }
 
@@ -12,4 +13,5 @@ align-items: center;
 .right ul li {}
 
 
-.map {height: 250px; width: 500px; }
+.map {height: 250px; width: 100% !important; }
+.map .mapboxgl-map {width: 100% !important;}
