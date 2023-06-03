@@ -1,0 +1,18 @@
+
+.imageList {
+  width: 100%;
+  grid-column: 1/-1;
+  height: 550px;
+  margin: 0 auto;
+  border-top: 1px solid #ccc;
+  overflow-x: auto;
+
+}
+
+.imageList ul {
+  display: flex;
+  column-gap: .2rem;
+  
+
+}
+.imageList ul li img {height: 250px; object-fit: fill;}

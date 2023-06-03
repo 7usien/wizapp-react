@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "./searchbox.module.css";
 
-function SearchBox({setLatsData}) {
+function SearchBox({setLatsData, setImageCity}) {
   const [city, setCity] = useState("");
-  const [lats, setLats]=useState(null)
+  const [lats, setLats]=useState(null);
 
   const fetchData =useCallback( async () => {
     const data =
@@ -20,6 +20,7 @@ function SearchBox({setLatsData}) {
     
     const getLats = setTimeout(() => {
       if(city){
+        setImageCity(city)
       fetchData();}
     }, 2000);
 

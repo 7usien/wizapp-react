@@ -7,14 +7,16 @@ import SearchBox from "./components/search/SearchBox";
 
 function App() {
   const [latsData, setLatsData] = useState([]);
+const [ImageCity, setImageCity] = useState('');
+
 
   return (
     <div className="App">
       <Header />
       <Container width="1200px">
-        <SearchBox setLatsData={setLatsData} />
+        <SearchBox setImageCity={setImageCity} setLatsData={setLatsData} />
 
-        <InfoCard latsData={latsData} />
+        <InfoCard ImageCity={ImageCity} latsData={latsData} />
       </Container>
     </div>
   );

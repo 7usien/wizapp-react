@@ -1,17 +1,18 @@
 .infoCard {
   background-color: #EDF2F8;
   border-radius:40px;
-display: flex;
-flex-direction: column;
+display: grid;
+
+grid-template-columns: 500px auto;
 
 align-items: center;
 }
 
 .right h3{color:#484848 ;}
 .right h1{color: #2667B1;}
-.right ul {}
-.right ul li {}
 
 
-.map {height: 250px; width: 100% !important; }
+
+.map {height: 250px; width:500px !important;  overflow: hidden;}
 .map .mapboxgl-map {width: 100% !important;}
+
