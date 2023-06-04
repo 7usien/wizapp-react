@@ -1,49 +1,60 @@
 .infoCard {
- display: flex;
- background-color: #edf2f8;
- border-radius: 40px;
- align-items: center;
- justify-content: space-between;
- padding: 2rem 2rem;
+  display: flex;
+  background-color: #edf2f8;
+  border-radius: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2rem;
 }
-
-
 
 .right h3 {
   color: #484848;
   font-weight: bold;
   font-size: 1rem;
-
-
 }
 .right h1 {
   color: #2667b1;
   text-transform: capitalize;
   font-size: 3rem;
   padding: 1rem 0;
- 
 }
 
-.iconWiz {display: inline-block;}
-.iconWiz img {max-height: 40px; vertical-align: middle;}
+.iconWiz {
+  display: inline-block;
+}
+.iconWiz img {
+  max-height: 40px;
+  vertical-align: middle;
+}
 
 .right ul {
-
   display: grid;
   column-gap: 3rem;
   grid-template-columns: repeat(2, 1fr);
+}
+.right ul li {
+  list-style: none;
+  line-height: 1.8;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.right ul li .value {
+  display: block;
+  color: #2667b1;
+}
+.maps {
+  width: 100%;
+  max-height: 400px;
+  margin: 1rem auto;
+  background-color: #edf2f8;
 
+  overflow: hidden;
 }
-.right ul li {list-style: none; line-height: 1.8;
-font-size: 1.5rem; font-weight: bold;
-}
-.right ul li .value {display: block; 
-color: #2667b1;}
-.maps {}
-.imageThum img {
+
+.maps .imageThum img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: .3rem .3rem .8rem rgba(66, 87, 114, 0.5);
+  box-shadow: 0.3rem 0.3rem 0.8rem rgba(66, 87, 114, 0.5);
 }

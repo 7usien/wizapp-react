@@ -10,7 +10,7 @@ import ReactMapGL from "react-map-gl";
 import styles from "./infocard.module.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-function InfoCard({ latsData, ImageCity }) {
+function InfoCard({ latsData, ImageCity, setLoading }) {
   const [mapData, setMapData] = useState(latsData);
   const [imagesList, setImagesList] = useState([]);
 
@@ -23,6 +23,7 @@ function InfoCard({ latsData, ImageCity }) {
   });
 
   const fetchImages = async () => {
+   
     const images = await fetch(
       `https://api.pexels.com/v1/search?query=${ImageCity}`,
       {
@@ -52,7 +53,7 @@ function InfoCard({ latsData, ImageCity }) {
           latitude: `${mapData[0]?.lat} `,
           zoom: 10,
         }}
-        style={{ width: 600, height: 400 }}
+        style={{ width: '100%', height: 400 }}
         mapStyle="mapbox://styles/mapbox/navigation-night-v1"
       />
     ) : null;
@@ -76,10 +77,12 @@ function InfoCard({ latsData, ImageCity }) {
   const [weatherData, setWeatherData] = useState([]);
 
   const getWiz = useCallback(async () => {
+    setLoading(true);
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${mapData[0]?.lat}&lon=${mapData[0]?.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
     );
     const jsonWiz = await res.json();
+    setLoading(false);
     return setWeatherData(jsonWiz);
   }, [mapData[0]?.lat, mapData[0]?.lon]);
 
