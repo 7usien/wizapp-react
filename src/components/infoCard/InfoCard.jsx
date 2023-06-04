@@ -48,8 +48,8 @@ function InfoCard({ latsData, ImageCity }) {
         }
         mapboxAccessToken={process.env.REACT_APP_MAP_TOEKN}
         initialViewState={{
-          longitude: `${mapData[0]?.lon}`,
-          latitude: `${mapData[0]?.lat}`,
+          longitude: `${mapData[0]?.lon} `,
+          latitude: `${mapData[0]?.lat} `,
           zoom: 10,
         }}
         style={{ width: 600, height: 400 }}
@@ -73,45 +73,73 @@ function InfoCard({ latsData, ImageCity }) {
     }));
   }, [latsData, ImageCity]);
 
-
-  const [weatherData, setWeatherData] =useState([])
+  const [weatherData, setWeatherData] = useState([]);
 
   const getWiz = useCallback(async () => {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${mapData[0]?.lat}&lon=${mapData[0]?.lon}&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${mapData[0]?.lat}&lon=${mapData[0]?.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
     );
-    const jsonWiz=await res.json()
+    const jsonWiz = await res.json();
     return setWeatherData(jsonWiz);
-  },[mapData[0]?.lat, mapData[0]?.lon]);
+  }, [mapData[0]?.lat, mapData[0]?.lon]);
 
   useEffect(() => {
     if (mapData[0]?.lat && mapData[0]?.lon) {
       getWiz();
     }
-  }, [mapData[0]?.lat, mapData[0]?.lon]);
+  }, [getWiz, mapData[0]?.lat, mapData[0]?.lon, mapData]);
 
-  
+  const showDate = () => {
+    const date = new Date();
+
+    // This arrangement can be altered based on how we want the date's format to appear.
+    let currentDate = `${date.toDateString()}`;
+    return currentDate;
+  };
 
   return (
-    <div className={styles.infoCard}>
-      <div className={styles.left}>
+    <>
+      <div className={styles.infoCard}>
+        <div className={styles.right}>
+          <h3>{showDate()}</h3>
+       
+          <h1>   
+            {weatherData.name}
+          </h1>
+
+          <ul>
+            <li>Temparture : <span className={styles.value}>
+
+            {Math.round(weatherData.main?.temp)}
+            <span className={styles.iconWiz}>
+            <img
+              alt=""
+              src={`http://openweathermap.org/img/w/${weatherData.weather?.[0].icon}.png`}
+            />
+          </span>
+            </span>
+            </li>
+            <li>Humdity : <span className={styles.value}>{weatherData.main?.humidity}%</span></li>
+            <li>feels Like : <span className={styles.value}>
+            {weatherData.main?.feels_like}</span></li>
+          </ul>
+        </div>
+
+        <div className={styles.left}>
+          <span className={styles.imageThum}>
+            <img src={imagesList[0]?.src.medium} alt="" />
+          </span>
+        </div>
+      </div>
+
+      <div className={styles.maps}>
         <div id="map" className={styles.map}>
           {mapCode()}
         </div>
       </div>
-      <div className={styles.right}>
-        <h3>May 22, 2023 | 11:58 PM</h3>
-        <h1>{weatherData.sys.country}</h1>
-
-        <ul>
-          <li>Temparture : {weatherData.main?.temp}</li>
-          <li>Humdity : {weatherData.main?.humidity}</li>
-          <li>feels Like : {weatherData.main?.feels_like}</li>
-        </ul>
-      </div>
 
       {imagesList && <ImgList imagesList={imagesList} />}
-    </div>
+    </>
   );
 }
 
