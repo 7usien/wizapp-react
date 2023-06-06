@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Container from "./components/Container/Container";
 import Header from "./components/header/Header";
@@ -8,22 +8,24 @@ import Footer from "./components/footer/Footer";
 
 function App() {
   const [latsData, setLatsData] = useState([]);
-const [ImageCity, setImageCity] = useState('');
-const [loading, setLoading]=useState(false);
+  const [ImageCity, setImageCity] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  console.log('loading', loading)
 
   return (
     <div className="App">
       <Header />
       <Container width="1200px">
-
         <SearchBox setImageCity={setImageCity} setLatsData={setLatsData} />
 
-        {loading ? <div>loading wait ...</div> :
+        <InfoCard
+          
+          setLoading={setLoading}
+          ImageCity={ImageCity}
+          latsData={latsData}
+        />
 
-        <InfoCard setLoading={setLoading} ImageCity={ImageCity} latsData={latsData} />
-   
-  }
-        
         <Footer />
       </Container>
     </div>

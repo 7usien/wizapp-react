@@ -1,24 +1,26 @@
-
 .imageList {
   width: 100%;
 
-  max-height: 350px;
-  
+  height: 400px;
+
   margin: 0 auto;
   border-top: 1px solid #ccc;
   overflow-x: auto;
 
   background-color: #edf2f8;
   border-radius: 40px;
-  
-
 }
-.imageList h3 { text-align: left; font-size: 2rem; padding: 2rem 2rem;}
+.imageList h3 {
+  text-align: left;
+  font-size: 2rem;
+  padding: 2rem 2rem;
+}
 .imageList ul {
   display: flex;
-padding: 0;
-  column-gap: .1rem;
-  
-
+  padding: 0;
+  column-gap: 0.1rem;
 }
-.imageList ul li img {height: 350px; object-fit: fill;}
+.imageList ul li img {
+  height: 350px;
+  object-fit: fill;
+}

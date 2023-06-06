@@ -1,7 +1,6 @@
 import styles from './imglist.module.css'
 
 function ImgList({imagesList}) {
-  console.log(imagesList)
   return (
     <div className={styles.imageList}>
       <h3>city photos : </h3>
